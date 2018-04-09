@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 120
+max-complexity = 16
+ignore = E22,E241

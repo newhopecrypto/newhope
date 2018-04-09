@@ -1,0 +1,70 @@
+---------------
+# Original newhope with k = 16
+load("https://bitbucket.org/malb/lwe-estimator/raw/HEAD/estimator.py")
+k = 16.0
+n = 1024; q = 12289; stddev = sqrt(k/2); alpha = alphaf(sigmaf(stddev), q)
+_ = estimate_lwe(n, alpha, q, reduction_cost_model=BKZ.sieve)
+
+
+usvp: rop: ˜2^399.6,  m:     1339,  red: ˜2^399.6,  d_0: 1.001729,  ß: 1245,  d: 2364,  repeat:       44
+ dec: rop: ˜2^410.0,  m:     1308,  red: ˜2^410.0,  d_0: 1.001763,  ß: 1213,  d: 2332,  babai: ˜2^395.5,  babai_op: ˜2^410.6,  repeat:  ˜2^25.2,  e: ˜2^-23.0
+dual: rop: ˜2^355.5,  m:  ˜2^11.1,  red: ˜2^355.5,  d_0: 1.001884,  ß: 1113,  repeat: ˜2^307.0,  d: 2263,  c:        1
+
+
+
+
+---------------
+# Proposed newhope with k = 8
+load("https://bitbucket.org/malb/lwe-estimator/raw/HEAD/estimator.py")
+k = 8.0
+n = 1024; q = 12289; stddev = sqrt(k/2); alpha = alphaf(sigmaf(stddev), q)
+_ = estimate_lwe(n, alpha, q, reduction_cost_model=BKZ.sieve)
+
+
+usvp: rop: ˜2^362.2,  m:     1243,  red: ˜2^362.2,  d_0: 1.001879,  ß: 1117,  d: 2268,  repeat:       44
+ dec: rop: ˜2^373.4,  m:     1207,  red: ˜2^373.4,  d_0: 1.001885,  ß: 1112,  d: 2231,  babai: ˜2^359.7,  babai_op: ˜2^374.8,  repeat:  ˜2^18.2,  e: ˜2^-16.0
+dual: rop: ˜2^333.6,  m:  ˜2^11.1,  red: ˜2^333.6,  d_0: 1.001986,  ß: 1038,  repeat: ˜2^243.0,  d: 2204,  c:        1
+
+
+---------------
+load("https://bitbucket.org/malb/lwe-estimator/raw/HEAD/estimator.py")
+k = 16.0
+n = 512; q = 12289; stddev = sqrt(k/2); alpha = alphaf(sigmaf(stddev), q)
+_ = estimate_lwe(n, alpha, q, reduction_cost_model=BKZ.sieve)
+
+
+usvp: rop: ˜2^177.9,  m:      669,  red: ˜2^177.9,  d_0: 1.003460,  ß:  489,  d: 1182,  repeat:       44
+ dec: rop: ˜2^187.3,  m:      674,  red: ˜2^187.3,  d_0: 1.003381,  ß:  505,  d: 1186,  babai: ˜2^173.4,  babai_op: ˜2^188.5,  repeat:     1177,  e: 0.003906
+dual: rop: ˜2^177.4,  m:     1196,  red: ˜2^177.4,  d_0: 1.003378,  ß:  506,  repeat: ˜2^125.0,  d: 1196,  c:        1
+
+
+---------------
+load("https://bitbucket.org/malb/lwe-estimator/raw/HEAD/estimator.py")
+k = 8.0
+n = 512; q = 12289; stddev = sqrt(k/2); alpha = alphaf(sigmaf(stddev), q)
+_ = estimate_lwe(n, alpha, q, reduction_cost_model=BKZ.sieve)
+
+
+usvp: rop: ˜2^162.0,  m:      621,  red: ˜2^162.0,  d_0: 1.003761,  ß:  435,  d: 1134,  repeat:       44
+ dec: rop: ˜2^170.7,  m:      633,  red: ˜2^170.7,  d_0: 1.003659,  ß:  452,  d: 1145,  babai: ˜2^156.5,  babai_op: ˜2^171.6,  repeat:      588,  e: 0.007812
+dual: rop: ˜2^162.6,  m:     1147,  red: ˜2^162.6,  d_0: 1.003671,  ß:  450,  repeat: ˜2^124.0,  d: 1147,  c:        1
+
+
+---------------
+# Adapted NewHope script
+
+### NewHope-512k24 ###
+Parameters : q =  12289 n =  512  sigma^2 =  12.0
+Primal  & 623 & 449 & 131 & 119 & 93
+Dual      & 602 & 448 & 131 & 118 & 92
+
+### NewHope-1024k8 ###
+Parameters : q =  12289 n =  1024  sigma^2 =  4.0
+Primal  & 999 & 886 & 259 & 235 & 183
+Dual      & 1048 & 881 & 257 & 233 & 182
+
+
+### NewHope-1024k16 ###
+Parameters : q =  12289 n =  1024  sigma^2 =  8.0
+Primal  & 1100 & 967 & 282 & 256 & 200
+Dual      & 1099 & 962 & 281 & 255 & 199
