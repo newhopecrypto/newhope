@@ -110,5 +110,5 @@ int crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const unsigned ch
   cmov(k_coins_d, sk+NEWHOPE_CCAKEM_SECRETKEYBYTES-NEWHOPE_SYMBYTES, NEWHOPE_SYMBYTES, fail); /* Overwrite pre-k with z on re-encryption failure */
   shake256(ss, NEWHOPE_SYMBYTES, k_coins_d, 2*NEWHOPE_SYMBYTES);                              /* hash concatenation of pre-k and h(c) to k */
 
-  return -fail;
+  return 0;
 }

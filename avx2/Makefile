@@ -3,7 +3,7 @@ CFLAGS = -no-pie -Wall -Wextra -g -O3 -fomit-frame-pointer -msse2avx -mavx2 -mar
 NISTFLAGS = -O3 -fomit-frame-pointer -march=native -fPIC -no-pie
 
 HEADERS = params.h poly.h randombytes.h ntt.h reduce.h verify.h cpapke.h
-SOURCES = poly.c reduce.c fips202.c  verify.c cpapke.c consts.c ntt_double.s ntt.c precomp.c
+SOURCES = poly.c reduce.c fips202.c  verify.c cpapke.c ntt_double.s ntt.c precomp.c
 SOURCES += fips202x4.c  keccak4x/KeccakP-1600-times4-SIMD256.o
 CCAKEM  = ccakem.c
 CPAKEM  = cpakem.c

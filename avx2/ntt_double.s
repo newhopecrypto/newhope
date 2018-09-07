@@ -1,77 +1,29 @@
 
-# qhasm: int64 input_0
 
-# qhasm: int64 input_1
+q_vector:
+.double 12289.0
+.double 12289.0
+.double 12289.0
+.double 12289.0
 
-# qhasm: int64 input_2
+qinv_vector:
+.double .00008137358613394092
+.double .00008137358613394092
+.double .00008137358613394092
+.double .00008137358613394092
 
-# qhasm: int64 input_3
+neg2:
+.double 1.
+.double -1.
+.double 1.
+.double -1.
 
-# qhasm: int64 input_4
+neg4:
+.double 1.
+.double 1.
+.double -1.
+.double -1.
 
-# qhasm: int64 input_5
-
-# qhasm: stack64 input_6
-
-# qhasm: stack64 input_7
-
-# qhasm: int64 caller_r11
-
-# qhasm: int64 caller_r12
-
-# qhasm: int64 caller_r13
-
-# qhasm: int64 caller_r14
-
-# qhasm: int64 caller_r15
-
-# qhasm: int64 caller_rbx
-
-# qhasm: int64 caller_rbp
-
-# qhasm: int64 ctri
-
-# qhasm: int64 ctrj
-
-# qhasm: int64 ap
-
-# qhasm: int64 tp
-
-# qhasm: int64 wp
-
-# qhasm: int64 pp
-
-# qhasm: reg256 c
-
-# qhasm: reg256 qinv
-
-# qhasm: reg256 q
-
-# qhasm: reg256 t0
-
-# qhasm: reg256 t1
-
-# qhasm: reg256 t2
-
-# qhasm: reg256 t3
-
-# qhasm: reg256 w
-
-# qhasm: reg256 a0
-
-# qhasm: reg256 a1
-
-# qhasm: reg256 a2
-
-# qhasm: reg256 a3
-
-# qhasm: reg256 r0
-
-# qhasm: reg256 r1
-
-# qhasm: reg256 r2
-
-# qhasm: reg256 r3
 
 # qhasm: enter ntt_double
 .p2align 5
@@ -85,14 +37,14 @@ add $0,%r11
 sub %r11,%rsp
 
 # qhasm: q = mem256[q_vector]
-# asm 1: vmovdqu q_vector,>q=reg256#1
+# asm 1: vmovdqu q_vector(%rip),>q=reg256#1
 # asm 2: vmovdqu q_vector,>q=%ymm0
-vmovdqu q_vector,%ymm0
+vmovdqu q_vector(%rip),%ymm0
 
 # qhasm: qinv = mem256[qinv_vector]
 # asm 1: vmovdqu qinv_vector,>qinv=reg256#2
 # asm 2: vmovdqu qinv_vector,>qinv=%ymm1
-vmovdqu qinv_vector,%ymm1
+vmovdqu qinv_vector(%rip),%ymm1
 
 # qhasm: ctrj = 64
 # asm 1: mov  $64,>ctrj=int64#4
@@ -142,7 +94,7 @@ vcvtdq2pd 48(%r8),%ymm5
 # qhasm: r3 = mem256[neg2]
 # asm 1: vmovdqu neg2,>r3=reg256#7
 # asm 2: vmovdqu neg2,>r3=%ymm6
-vmovdqu neg2,%ymm6
+vmovdqu neg2(%rip),%ymm6
 
 # qhasm: 4x r0 = approx a0 * r3
 # asm 1: vmulpd <a0=reg256#3,<r3=reg256#7,>r0=reg256#8
@@ -247,7 +199,7 @@ vperm2f128 $0x21,%ymm5,%ymm5,%ymm6
 # qhasm: c = mem256[neg4]
 # asm 1: vmovdqu neg4,>c=reg256#11
 # asm 2: vmovdqu neg4,>c=%ymm10
-vmovdqu neg4,%ymm10
+vmovdqu neg4(%rip),%ymm10
 
 # qhasm: 4x a0 approx+= r0 * c
 # asm 1: vfmadd231pd <r0=reg256#3,<c=reg256#11,<a0=reg256#8
@@ -465,7 +417,7 @@ vcvtdq2pd 48(%r8),%ymm5
 # qhasm: r3 = mem256[neg2]
 # asm 1: vmovdqu neg2,>r3=reg256#7
 # asm 2: vmovdqu neg2,>r3=%ymm6
-vmovdqu neg2,%ymm6
+vmovdqu neg2(%rip),%ymm6
 
 # qhasm: 4x r0 = approx a0 * r3
 # asm 1: vmulpd <a0=reg256#3,<r3=reg256#7,>r0=reg256#8
@@ -570,7 +522,7 @@ vperm2f128 $0x21,%ymm5,%ymm5,%ymm6
 # qhasm: c = mem256[neg4]
 # asm 1: vmovdqu neg4,>c=reg256#11
 # asm 2: vmovdqu neg4,>c=%ymm10
-vmovdqu neg4,%ymm10
+vmovdqu neg4(%rip),%ymm10
 
 # qhasm: 4x a0 approx+= r0 * c
 # asm 1: vfmadd231pd <r0=reg256#3,<c=reg256#11,<a0=reg256#8
@@ -2221,12 +2173,12 @@ sub %r11,%rsp
 # qhasm: q = mem256[q_vector]
 # asm 1: vmovdqu q_vector,>q=reg256#1
 # asm 2: vmovdqu q_vector,>q=%ymm0
-vmovdqu q_vector,%ymm0
+vmovdqu q_vector(%rip),%ymm0
 
 # qhasm: qinv = mem256[qinv_vector]
 # asm 1: vmovdqu qinv_vector,>qinv=reg256#2
 # asm 2: vmovdqu qinv_vector,>qinv=%ymm1
-vmovdqu qinv_vector,%ymm1
+vmovdqu qinv_vector(%rip),%ymm1
 
 # qhasm: ctrj = 32
 # asm 1: mov  $32,>ctrj=int64#4
@@ -2276,7 +2228,7 @@ vcvtdq2pd 48(%r8),%ymm5
 # qhasm: r3 = mem256[neg2]
 # asm 1: vmovdqu neg2,>r3=reg256#7
 # asm 2: vmovdqu neg2,>r3=%ymm6
-vmovdqu neg2,%ymm6
+vmovdqu neg2(%rip),%ymm6
 
 # qhasm: 4x r0 = approx a0 * r3
 # asm 1: vmulpd <a0=reg256#3,<r3=reg256#7,>r0=reg256#8
@@ -2441,7 +2393,7 @@ vperm2f128 $0x21,%ymm5,%ymm5,%ymm6
 # qhasm: c = mem256[neg4]
 # asm 1: vmovdqu neg4,>c=reg256#11
 # asm 2: vmovdqu neg4,>c=%ymm10
-vmovdqu neg4,%ymm10
+vmovdqu neg4(%rip),%ymm10
 
 # qhasm: 4x a0 approx+= r0 * c
 # asm 1: vfmadd231pd <r0=reg256#3,<c=reg256#11,<a0=reg256#8
@@ -2674,7 +2626,7 @@ vcvtdq2pd 48(%r8),%ymm5
 # qhasm: r3 = mem256[neg2]
 # asm 1: vmovdqu neg2,>r3=reg256#7
 # asm 2: vmovdqu neg2,>r3=%ymm6
-vmovdqu neg2,%ymm6
+vmovdqu neg2(%rip),%ymm6
 
 # qhasm: 4x r0 = approx a0 * r3
 # asm 1: vmulpd <a0=reg256#3,<r3=reg256#7,>r0=reg256#8
@@ -2839,7 +2791,7 @@ vperm2f128 $0x21,%ymm5,%ymm5,%ymm6
 # qhasm: c = mem256[neg4]
 # asm 1: vmovdqu neg4,>c=reg256#11
 # asm 2: vmovdqu neg4,>c=%ymm10
-vmovdqu neg4,%ymm10
+vmovdqu neg4(%rip),%ymm10
 
 # qhasm: 4x a0 approx+= r0 * c
 # asm 1: vfmadd231pd <r0=reg256#3,<c=reg256#11,<a0=reg256#8
@@ -4300,12 +4252,12 @@ mov  %rdx,%rdx
 # qhasm: q = mem256[q_vector]
 # asm 1: vmovdqu q_vector,>q=reg256#1
 # asm 2: vmovdqu q_vector,>q=%ymm0
-vmovdqu q_vector,%ymm0
+vmovdqu q_vector(%rip),%ymm0
 
 # qhasm: qinv = mem256[qinv_vector]
 # asm 1: vmovdqu qinv_vector,>qinv=reg256#2
 # asm 2: vmovdqu qinv_vector,>qinv=%ymm1
-vmovdqu qinv_vector,%ymm1
+vmovdqu qinv_vector(%rip),%ymm1
 
 # qhasm: ctri = 256
 # asm 1: mov  $256,>ctri=int64#3
@@ -4530,12 +4482,12 @@ mov  %rdx,%rdx
 # qhasm: q = mem256[q_vector]
 # asm 1: vmovdqu q_vector,>q=reg256#1
 # asm 2: vmovdqu q_vector,>q=%ymm0
-vmovdqu q_vector,%ymm0
+vmovdqu q_vector(%rip),%ymm0
 
 # qhasm: qinv = mem256[qinv_vector]
 # asm 1: vmovdqu qinv_vector,>qinv=reg256#2
 # asm 2: vmovdqu qinv_vector,>qinv=%ymm1
-vmovdqu qinv_vector,%ymm1
+vmovdqu qinv_vector(%rip),%ymm1
 
 # qhasm: ctri = 256
 # asm 1: mov  $256,>ctri=int64#3
