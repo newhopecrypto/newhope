@@ -3,9 +3,7 @@
 
 #include "inttypes.h"
 
-//extern uint16_t omegas_bitrev_montgomery[];
 extern uint16_t omegas_inv_bitrev_montgomery[];
-
 extern uint16_t gammas_bitrev_montgomery[];
 extern uint16_t gammas_inv_montgomery[];
 
