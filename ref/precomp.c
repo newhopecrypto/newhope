@@ -23,7 +23,7 @@
  *        263,135,391,71,327,199,455,39,295,167,423,103,359,231,487,23,279,151,407,87,343,215,471,55,311,183,439,119,375,247,503,15,
  *        271,143,399,79,335,207,463,47,303,175,431,111,367,239,495,31,287,159,415,95,351,223,479,63,319,191,447,127,383,255,511]
  * n = 512; q = 12289; mont=2^18
- * g=10968;
+ * g = Mod(10968, q);
  * omegas_inv_bitrev_montgomery = lift(vector(n/2, i, (g^2)^(-brv[2*(i-1)+1])*mont))
  * gammas_bitrev_montgomery = lift(vector(n, i, g^(brv[i])*mont))
  * gammas_inv_montgomery = lift(vector(n, i, g^(-(i-1))/n*mont))
@@ -65,7 +65,7 @@
  *        31,543,287,799,159,671,415,927,95,607,351,863,223,735,479,991,63,575,319,831,191,703,447,959,127,639,383,895,255,767,511,1023]
  * 
  * n = 1024; q = 12289; mont=2^18
- * g=7;
+ * g = Mod(7, q);
  * omegas_inv_bitrev_montgomery = lift(vector(n/2, i, (g^2)^(-brv[2*(i-1)+1])*mont))
  * gammas_bitrev_montgomery = lift(vector(n, i, g^(brv[i])*mont))
  * gammas_inv_montgomery = lift(vector(n, i, g^(-(i-1))/n*mont))
