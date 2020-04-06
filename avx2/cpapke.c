@@ -44,12 +44,13 @@ void cpapke_keypair(unsigned char *pk,
                     unsigned char *sk)
 {
   poly a, e, r, pkp, skp;
-  unsigned char buf[2*NEWHOPE_SYMBYTES];
+  unsigned char buf[2*NEWHOPE_SYMBYTES+1];
   unsigned char *publicseed = buf;
   unsigned char *noiseseed = buf+NEWHOPE_SYMBYTES;
 
-  randombytes(buf, NEWHOPE_SYMBYTES);
-  shake256(buf, 2*NEWHOPE_SYMBYTES, buf, NEWHOPE_SYMBYTES);
+  buf[0] = 0x01;
+  randombytes(buf+1, NEWHOPE_SYMBYTES);
+  shake256(buf, 2*NEWHOPE_SYMBYTES, buf, NEWHOPE_SYMBYTES+1);
 
   gen_a(&a, publicseed);
 
