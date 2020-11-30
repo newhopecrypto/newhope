@@ -99,7 +99,7 @@ int main()
   for(i=0; i<NTESTS; i++)
   {
     t[i] = cpucycles();
-    crypto_kem_enc(key_b, sendb+i*CRYPTO_CIPHERTEXTBYTES, senda+i*CRYPTO_PUBLICKEYBYTES);
+    crypto_kem_enc(sendb+i*CRYPTO_CIPHERTEXTBYTES, key_b, senda+i*CRYPTO_PUBLICKEYBYTES);
   }
   print_results("encaps:  ", t, NTESTS);
 
