@@ -1,6 +1,6 @@
 CC = /usr/bin/gcc
 CFLAGS = -no-pie -Wall -Wextra -g -O3 -fomit-frame-pointer -msse2avx -mavx2 -march=native
-NISTFLAGS = -O3 -fomit-frame-pointer -march=native -fPIC -no-pie
+NISTFLAGS = -O3 -fomit-frame-pointer -march=native -mavx2 -fPIC -no-pie
 
 HEADERS = params.h poly.h randombytes.h ntt.h reduce.h verify.h cpapke.h
 SOURCES = poly.c reduce.c fips202.c  verify.c cpapke.c ntt_double.s ntt.c precomp.c
